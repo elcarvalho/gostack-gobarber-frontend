@@ -35,7 +35,16 @@ export const NotificationList = styled.div`
   background: rgba(0, 0, 0, 0.6);
   border-radius: 4px;
   padding: 15px 5px;
+  z-index: 1;
   display: ${props => (props.visible ? 'block' : 'none')};
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+
+    &::before {
+      border-bottom-color: rgba(0, 0, 0, 0.8);
+    }
+  }
 
   &::before {
     content: '';
