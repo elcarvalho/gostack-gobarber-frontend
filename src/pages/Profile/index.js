@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import AvatarInput from './AvatarInput';
 
+import { signOut } from '~/store/modules/auth/actions';
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
 import { Container } from './styles';
@@ -13,6 +14,10 @@ export default function Profile() {
 
   const handleSubmit = data => {
     dispatch(updateProfileRequest(data));
+  };
+
+  const hanleSignedOut = () => {
+    dispatch(signOut());
   };
 
   return (
@@ -33,13 +38,15 @@ export default function Profile() {
         <Input
           name="confirmPassword"
           placeholder="Confirmação de senha"
-          type=""
+          type="password"
         />
 
         <button type="submit">Atualizar perfil</button>
       </Form>
 
-      <button type="button">Sair do GoBarber</button>
+      <button type="button" onClick={hanleSignedOut}>
+        Sair do GoBarber
+      </button>
     </Container>
   );
 }
